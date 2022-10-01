@@ -1,13 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const movieSlice = createSlice({
-  name: "movie",
-  initialState: [],
-  reducers: {
-    addMovie: (state, action) => {
-      state.push(action.payload);
-    },
-  },
-});
+import {moviesList} from "../../assets/mookData"
+
+const initialState= {movies:moviesList}
+
+const movieSlice= createSlice({
+    name:"movie",
+    initialState,
+    reducers:{
+        addmovie:(state,action)=>{
+            state.movies.push(action.payload)
+        }
+    }
+
+})
+
 export default movieSlice.reducer;
-export const { addMovie } = movieSlice.actions;
+console.log('actions reducer',movieSlice.actions)
+export const {addmovie}= movieSlice.actions
